@@ -4,7 +4,7 @@
 **Author**: Mikko Hopia  
 **License**: GPLv2 or later  
 
-Silver Redirector is a simple and flexible WordPress plugin that allows you to set up URL redirections for specific dates. You can create, edit, and delete redirect rules easily from the WordPress admin panel.
+Silver Redirector is a simple and flexible WordPress plugin that allows you to set up URL redirections for specific dates. You can create and delete redirect rules easily from the WordPress admin panel.
 
 ## Features
 - Redirect any URL to another on a specific date.
