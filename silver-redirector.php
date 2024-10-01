@@ -30,12 +30,6 @@ function silver_redirector_deactivate() {
 }
 register_deactivation_hook( __FILE__, 'silver_redirector_deactivate' );
 
-// Uninstall logic
-register_uninstall_hook( __FILE__, 'silver_redirector_uninstall' );
-function silver_redirector_uninstall() {
-  delete_option( 'silver_redirects' );
-}
-
 // Initialize plugin admin interface
 if ( is_admin() ) {
   new Silver_Redirector_Admin();
