@@ -8,7 +8,7 @@ Silver Redirector is a simple and flexible WordPress plugin that allows you to s
 
 ## Features
 - Redirect any URL to another on a specific date.
-- Add, modify, or delete redirects from the WordPress admin interface.
+- Add or delete redirects from the WordPress admin interface.
 - Designed to handle multiple redirects efficiently without slowing down your site.
 - Safe uninstall: removes all plugin data when uninstalled.
 
