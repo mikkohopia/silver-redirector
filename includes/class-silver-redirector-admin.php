@@ -4,6 +4,7 @@ class Silver_Redirector_Admin {
   public function __construct() {
     add_action( 'admin_menu', array( $this, 'add_admin_menu' ) );
     add_action( 'admin_init', array( $this, 'register_settings' ) );
+    add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles' ) );
   }
 
   public function add_admin_menu() {
@@ -19,6 +20,10 @@ class Silver_Redirector_Admin {
 
   public function register_settings() {
     register_setting( 'silver_redirector_group', 'silver_redirects' );
+  }
+
+  public function enqueue_admin_styles() {
+    wp_enqueue_style( 'silver-redirector-admin-styles', plugin_dir_url( __FILE__ ) . 'admin-styles.css' );
   }
 
   public function admin_page() {
@@ -51,16 +56,16 @@ class Silver_Redirector_Admin {
           <form method="post">
               <table class="form-table">
                   <tr>
-                      <th><label for="redirect_date">Redirect Date (YYYY-MM-DD)</label></th>
+                      <th><label for="redirect_date">Redirect Date</label></th>
                       <td><input type="date" id="redirect_date" name="redirect_date" required></td>
                   </tr>
                   <tr>
                       <th><label for="from_url">From URL</label></th>
-                      <td><input type="text" id="from_url" name="from_url" required></td>
+                      <td><input type="text" id="from_url" name="from_url" required placeholder="Please start with https://"></td>
                   </tr>
                   <tr>
                       <th><label for="to_url">To URL</label></th>
-                      <td><input type="text" id="to_url" name="to_url" required></td>
+                      <td><input type="text" id="to_url" name="to_url" required placeholder="Please start with https://"></td>
                   </tr>
               </table>
               <button type="submit" name="add_redirect" class="button button-primary">Add Redirect</button>
@@ -79,7 +84,7 @@ class Silver_Redirector_Admin {
               <tbody>
                   <?php foreach ( $redirects as $index => $redirect ) : ?>
                       <tr>
-                          <td><?php echo esc_html( $redirect['date'] ); ?></td>
+                          <td><?php echo esc_html( date( 'd.m.Y', strtotime( $redirect['date'] ) ) ); ?></td>
                           <td><?php echo esc_html( $redirect['from_url'] ); ?></td>
                           <td><?php echo esc_html( $redirect['to_url'] ); ?></td>
                           <td>

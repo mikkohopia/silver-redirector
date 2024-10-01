@@ -1,0 +1,5 @@
+input#from_url,
+input#to_url {
+  max-width: 600px;
+  width: 100%;
+}
