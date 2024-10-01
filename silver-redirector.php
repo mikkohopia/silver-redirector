@@ -40,7 +40,7 @@ if ( is_admin() ) {
 // Redirect logic based on date
 function silver_redirector_check_redirects() {
   $redirects = get_option( 'silver_redirects', array() );
-  $current_date = date( 'Y-m-d' );
+  $current_date = wp_date( 'Y-m-d' );
   $current_url = $_SERVER['REQUEST_URI'];
   $current_url = ( isset($_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
   foreach ( $redirects as $redirect ) {
