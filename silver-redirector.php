@@ -44,7 +44,7 @@ function silver_redirector_check_redirects() {
   $current_url = ( isset($_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
   $current_url = rtrim( $current_url, '/' ); // Remove slash if there is one
   foreach ( $redirects as $redirect ) {
-    $from_url = rtrim( home_url( $redirect['from_url'] ), '/' ); // Remove slash if there is one
+    $from_url = rtrim( $redirect['from_url'], '/' ); // Remove slash if there is one
     if ( $redirect['date'] === $current_date && $from_url === $current_url ) {
       wp_redirect( home_url( $redirect['to_url'] ), 302 ); // 302 = Moved Temporarily
       exit;
