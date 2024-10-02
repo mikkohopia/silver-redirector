@@ -41,10 +41,11 @@ if ( is_admin() ) {
 function silver_redirector_check_redirects() {
   $redirects = get_option( 'silver_redirects', array() );
   $current_date = wp_date( 'Y-m-d' );
-  $current_url = $_SERVER['REQUEST_URI'];
   $current_url = ( isset($_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+  $current_url = rtrim( $current_url, '/' ); // Remove slash if there is one
   foreach ( $redirects as $redirect ) {
-    if ( $redirect['date'] === $current_date && $redirect['from_url'] === $current_url ) {
+    $from_url = rtrim( home_url( $redirect['from_url'] ), '/' ); // Remove slash if there is one
+    if ( $redirect['date'] === $current_date && $from_url === $current_url ) {
       wp_redirect( home_url( $redirect['to_url'] ), 302 ); // 302 = Moved Temporarily
       exit;
     }
