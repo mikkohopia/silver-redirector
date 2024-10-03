@@ -1,6 +1,7 @@
 <?php
 /**
  * Plugin Name: Silver Redirector
+ * Plugin URI: https://github.com/mikkohopia/silver-redirector/
  * Description: Redirects pages to other URLs on specific dates.
  * Version: 1.0
  * Author: Mikko Hopia
