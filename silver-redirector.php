@@ -39,39 +39,6 @@ if ( is_admin() ) {
 }
 
 // Redirect logic based on date
-/* function silver_redirector_check_redirects() {
-  $redirects = get_option( 'silver_redirects', array() );
-  $current_date = wp_date( 'Y-m-d' );
-  $current_url = ( isset($_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-  $current_url = rtrim( $current_url, '/' ); // Remove slash if there is one
-  // Erota polku (path) ja parametrit nykyisestä URL:sta
-  $parsed_current_url = parse_url( $current_url );
-  $current_path = isset( $parsed_current_url['path'] ) ? $parsed_current_url['path'] : '';
-  foreach ( $redirects as $redirect ) {
-    //$from_url = rtrim( $redirect['from_url'], '/' ); // Remove slash if there is one
-    //if ( $redirect['date'] === $current_date && $from_url === $current_url ) {
-      //wp_redirect( home_url( $redirect['to_url'] ), 302 ); // 302 = Moved Temporarily
-      //exit;
-    //} 
-    // Tarkista, onko 'from_url' absoluuttinen vai suhteellinen
-    if ( strpos( $redirect['from_url'], 'http' ) === 0 ) {
-      // Jos absoluuttinen URL, käsittele sellaisenaan
-      $parsed_from_url = parse_url( $redirect['from_url'] );
-      $from_path = isset( $parsed_from_url['path'] ) ? $parsed_from_url['path'] : '';
-    } 
-    else {
-      // Jos suhteellinen URL, lisää 'home_url'
-      $parsed_from_url = parse_url( home_url( $redirect['from_url'] ) );
-      $from_path = isset( $parsed_from_url['path'] ) ? $parsed_from_url['path'] : '';
-    }
-    // Vertaa vain polkuja (path), ei parametreja
-    if ( $redirect['date'] === $current_date && $from_path === $current_path ) {
-      wp_redirect( home_url( $redirect['to_url'] ), 302 ); // 302 = Väliaikainen uudelleenohjaus
-      exit;
-    }
-  }
-} */
-// Redirect logic based on date
 function silver_redirector_check_redirects() {
   $redirects = get_option( 'silver_redirects', array() );
   
